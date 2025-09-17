@@ -163,3 +163,18 @@ static void *(*simpleffi_callback_lists[32])(void *,void *,void *,void *)={
 void *simpleffi_get_callback(int index){
     return simpleffi_callback_lists[index];
 }
+
+void *simpleffi_call_win32std(void* fn, int argc, void *argv) {
+    #if defined _WIN32 && !defined _WIN64
+    for (int i = argc - 1; i >= 0; i--) {
+        void* arg = argv[i];
+        __asm push arg
+    }
+    int result;
+    __asm {
+        call fn
+        mov result, eax
+    }
+    return result;
+    #endif
+}
