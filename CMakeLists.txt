@@ -6,4 +6,4 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_library(simpleffi STATIC src/simpleffi.c)
 
-target_include_directories(simpleffi PUBLIC include)
+target_include_directories(simpleffi PUBLIC ./include)

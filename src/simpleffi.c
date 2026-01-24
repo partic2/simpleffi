@@ -123,6 +123,9 @@ static void *simpleffi_callback31(void *arg0,void *arg1,void *arg2,void *arg3){
 void simpleffi_set_callback_handler(int index,simpleffi_callback_handler4 handler){
     handlers[index]=handler;
 }
+simpleffi_callback_handler4 simpleffi_get_callback_handler(int index){
+    return handlers[index];
+}
 
 static void *(*simpleffi_callback_lists[32])(void *,void *,void *,void *)={
     simpleffi_callback0,
